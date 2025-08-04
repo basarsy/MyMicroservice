@@ -32,9 +32,9 @@ public class TaskController : ControllerBase
             .ToList();
         return Ok(tasks);   
     }
-
-    [Route("{id}")]
+    
     [HttpGet]
+    [Route("{id}")]
     public IActionResult GetTask(int id)
     {
         var task = _context.Tasks
@@ -77,7 +77,8 @@ public class TaskController : ControllerBase
             }, task);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut]
+    [Route("{id}")]
     public IActionResult UpdateTask(int id, UpdateTaskDto updateDto)
     {
         var task = _context.Tasks.Find(id);
@@ -94,7 +95,8 @@ public class TaskController : ControllerBase
         return Ok($"Task with id {id} has been updated");
     }
     
-    [HttpDelete("{id}")]
+    [HttpDelete]
+    [Route("{id}")]
     public IActionResult DeleteTask(int id)
     {
         var task = _context.Tasks.Find(id);
@@ -108,8 +110,9 @@ public class TaskController : ControllerBase
         return Ok($"Task with id {id} has been deleted");
     }
     
-    [HttpPatch("{id}")]
-    public IActionResult ToggleTaskStatus(int id)
+    [HttpPatch]
+    [Route("toggle/{id}")]
+    public IActionResult ToggleTaskStatus(int id, bool taskStatus)
     {
         var task = _context.Tasks.Find(id);
         if (task == null)
@@ -119,5 +122,62 @@ public class TaskController : ControllerBase
         task.TaskStatus = !task.TaskStatus;
         _context.SaveChanges();
         return Ok($"Task with id {id} has been updated");   
+    }
+
+    [HttpPut]
+    [Route("prio/{id}")]
+    public IActionResult UpdateTaskPriority(int id, TaskPriorityDto priorityDto)
+    {
+        var task = _context.Tasks.Find(id);
+        if (task == null)
+        {
+            return NotFound($"Task with id {id} not found");
+        }
+
+        if (task.TaskPriority == priorityDto.TaskPriority)
+        {
+            return BadRequest($"Task with id {id} already has priority {priorityDto.TaskPriority}");       
+        }
+        task.TaskPriority = priorityDto.TaskPriority;
+        _context.SaveChanges();
+        return Ok($"Task with id {id} has been priority assigned as {priorityDto.TaskPriority}.");  
+    }
+
+    [HttpGet]
+    [Route("priofilter")]
+    public IActionResult FilterTasksByPriority(TaskPriorityDto priorityDto)
+    {
+        var task = _context.Tasks
+            .Where(p => p.TaskPriority == priorityDto.TaskPriority)
+            .Select(pt => new TaskFilterDto()
+            {
+                TaskTitle = pt.TaskTitle,
+                TaskDescription = pt.TaskDescription
+            })
+            .ToList();
+        if (task == null)
+        {
+            return BadRequest($"There are no tasks with priority {priorityDto.TaskPriority}");
+        }
+        return Ok(task);   
+    }
+    
+    [HttpGet]
+    [Route("statusfilter")]
+    public IActionResult FilterTasksByStatus(TaskStatusDto statusDto)
+    {
+        var task = _context.Tasks
+            .Where(s => s.TaskStatus == statusDto.TaskStatus)
+            .Select(st => new TaskFilterDto()
+            {
+                TaskTitle = st.TaskTitle,
+                TaskDescription = st.TaskDescription
+            })
+            .ToList();
+        if (task == null)
+        {
+            return BadRequest($"There are no tasks with status {statusDto.TaskStatus}");
+        }
+        return Ok(task);
     }
 }
