@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/basar/RiderProjects/MyMicroservices/AuthService/AuthService.csproj": {}
+    "/home/basar/RiderProjects/MyMicroservice/AuthService/AuthService.csproj": {}
   },
   "projects": {
-    "/home/basar/RiderProjects/MyMicroservices/AuthService/AuthService.csproj": {
+    "/home/basar/RiderProjects/MyMicroservice/AuthService/AuthService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/basar/RiderProjects/MyMicroservices/AuthService/AuthService.csproj",
+        "projectUniqueName": "/home/basar/RiderProjects/MyMicroservice/AuthService/AuthService.csproj",
         "projectName": "AuthService",
-        "projectPath": "/home/basar/RiderProjects/MyMicroservices/AuthService/AuthService.csproj",
+        "projectPath": "/home/basar/RiderProjects/MyMicroservice/AuthService/AuthService.csproj",
         "packagesPath": "/home/basar/.nuget/packages/",
-        "outputPath": "/home/basar/RiderProjects/MyMicroservices/AuthService/obj/",
+        "outputPath": "/home/basar/RiderProjects/MyMicroservice/AuthService/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/basar/.nuget/NuGet/NuGet.Config"
@@ -46,6 +46,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.18, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

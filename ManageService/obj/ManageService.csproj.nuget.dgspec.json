@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/basar/RiderProjects/MyMicroservices/ManageService/ManageService.csproj": {}
+    "/home/basar/RiderProjects/MyMicroservice/ManageService/ManageService.csproj": {}
   },
   "projects": {
-    "/home/basar/RiderProjects/MyMicroservices/ManageService/ManageService.csproj": {
+    "/home/basar/RiderProjects/MyMicroservice/ManageService/ManageService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/basar/RiderProjects/MyMicroservices/ManageService/ManageService.csproj",
+        "projectUniqueName": "/home/basar/RiderProjects/MyMicroservice/ManageService/ManageService.csproj",
         "projectName": "ManageService",
-        "projectPath": "/home/basar/RiderProjects/MyMicroservices/ManageService/ManageService.csproj",
+        "projectPath": "/home/basar/RiderProjects/MyMicroservice/ManageService/ManageService.csproj",
         "packagesPath": "/home/basar/.nuget/packages/",
-        "outputPath": "/home/basar/RiderProjects/MyMicroservices/ManageService/obj/",
+        "outputPath": "/home/basar/RiderProjects/MyMicroservice/ManageService/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/basar/.nuget/NuGet/NuGet.Config"
@@ -46,6 +46,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.18, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
