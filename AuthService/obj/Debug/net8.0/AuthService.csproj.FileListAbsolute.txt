@@ -1,0 +1,8 @@
+/home/basar/RiderProjects/MyMicroservice/AuthService/obj/Debug/net8.0/AuthService.csproj.AssemblyReference.cache
+/home/basar/RiderProjects/MyMicroservice/AuthService/obj/Debug/net8.0/AuthService.GeneratedMSBuildEditorConfig.editorconfig
+/home/basar/RiderProjects/MyMicroservice/AuthService/obj/Debug/net8.0/AuthService.AssemblyInfoInputs.cache
+/home/basar/RiderProjects/MyMicroservice/AuthService/obj/Debug/net8.0/AuthService.AssemblyInfo.cs
+/home/basar/RiderProjects/MyMicroservice/AuthService/obj/Debug/net8.0/AuthService.csproj.CoreCompileInputs.cache
+/home/basar/RiderProjects/MyMicroservice/AuthService/obj/Debug/net8.0/AuthService.MvcApplicationPartsAssemblyInfo.cs
+/home/basar/RiderProjects/MyMicroservice/AuthService/obj/Debug/net8.0/AuthService.MvcApplicationPartsAssemblyInfo.cache
+/home/basar/RiderProjects/MyMicroservice/AuthService/obj/Debug/net8.0/AuthService.sourcelink.json

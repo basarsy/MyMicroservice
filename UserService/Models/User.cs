@@ -1,8 +1,10 @@
-namespace UserService;
-
-public class User
+namespace UserService.Models
 {
-    public int UserId { get; set; }
-    public string UserName { get; set; }
-    public string UserPassword { get; set; }
+    public class User
+    {
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string UserPassword { get; set; }
+        public string PasswordHash { get; set; }
+    }
 }

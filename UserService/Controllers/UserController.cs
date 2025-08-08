@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using UserService.Data;
 using UserService.Dtos;
+using UserService.Models;
 
 namespace UserService.Controllers;
 
@@ -11,9 +13,9 @@ namespace UserService.Controllers;
 
 public class UserController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly UserDbContext _context;
 
-    public UserController(AppDbContext context)
+    public UserController(UserDbContext context)
     {
         _context = context;
     }
@@ -100,5 +102,25 @@ public class UserController : ControllerBase
         
         _context.SaveChanges();
         return Ok($"User with id {id} has been updated");   
+    }
+    
+    [HttpGet]
+    [Route("auth/{username}")]
+    public async Task<IActionResult> GetUserByUserName(string username)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => 
+            u.UserName == username);
+        if (user == null)
+        {
+            return NotFound($"User with username {username} not found");
+        }
+
+        return Ok(new UserDetailsDto
+            {
+                UserId = user.UserId,
+                UserName = user.UserName,
+                PasswordHash = user.PasswordHash
+            }
+        );
     }
 }

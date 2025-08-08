@@ -1,3 +1,5 @@
+using TaskService.Models;
+
 namespace TaskService.Dtos;
 
 public class TaskDetailsDto
@@ -7,4 +9,5 @@ public class TaskDetailsDto
     public string TaskDescription { get; set; }
     public bool TaskStatus { get; set; }
     public DateTime TaskDate { get; set; }
+    public TaskPriority? TaskPriority { get; set; }
 }

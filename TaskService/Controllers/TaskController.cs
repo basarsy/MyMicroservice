@@ -10,9 +10,9 @@ namespace TaskService.Controllers;
 
 public class TaskController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly TaskDbContext _context;
     
-    public TaskController(AppDbContext context)
+    public TaskController(TaskDbContext context)
     {
         _context = context;
     }
@@ -179,5 +179,20 @@ public class TaskController : ControllerBase
             return BadRequest($"There are no tasks with status {statusDto.TaskStatus}");
         }
         return Ok(task);
+    }
+    
+    [HttpPatch]
+    [Route("assign")]
+    public async Task<IActionResult> AssignUserToTask(TaskAssignDto assignDto)
+    {
+        var task = await _context.Tasks.FindAsync(assignDto.TaskId);
+        if (task == null)
+        {
+            return NotFound($"Task with id {assignDto.TaskId} not found");
+        }
+        task.UserId = assignDto.UserId;
+        await _context.SaveChangesAsync();
+
+        return Ok("User has been assigned to task");
     }
 }
